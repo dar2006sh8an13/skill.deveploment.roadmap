@@ -647,3 +647,119 @@ footer {
         margin: 10% auto;
     }
 }
+
+/* =========================================
+   Mobile Styles (Small Phones)
+   ========================================= */
+@media screen and (max-width: 480px) {
+
+    /* Logo */
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 45px;
+        width: 45px;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero {
+        padding: 30px 10px;
+    }
+
+    /* Container */
+    .container {
+        padding: 10px;
+    }
+
+    /* Project Cards */
+    .project-card-enhanced {
+        padding: 15px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Filter Buttons */
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Back Link */
+    .back-link {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    /* Tech Tags */
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+}
+
+/* =========================================
+   Tablet Styles (Medium Screens)
+   ========================================= */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    /* Grids */
+    .grid,
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   Desktop Enhancements (Large Screens)
+   ========================================= */
+@media screen and (min-width: 1024px) {
+
+    /* Larger containers for wide screens */
+    .container {
+        max-width: 1400px;
+    }
+
+    nav {
+        max-width: 1400px;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    /* Grids - More columns on large screens */
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
