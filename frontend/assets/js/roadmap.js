@@ -10,12 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchRoadmapDetails(id) {
+    console.log('🔍 Fetching roadmap with ID:', id);
+    console.log('📍 API URL:', `${API_BASE_URL}/api/roadmaps/${id}`);
+
     try {
         const response = await fetch(`${API_BASE_URL}/api/roadmaps/${id}`);
+        console.log('📡 Response status:', response.status, response.statusText);
+
         if (!response.ok) {
             throw new Error('Roadmap not found');
         }
         const data = await response.json();
+        console.log('✅ Roadmap data loaded:', data.title);
 
         // Normalize data structure: API returns "roadmap" object with levels, frontend expects "levels" array
         if (data.roadmap && !data.levels) {
@@ -28,7 +34,8 @@ async function fetchRoadmapDetails(id) {
 
         renderRoadmap(data);
     } catch (error) {
-        console.error('Error:', error);
+        console.error('❌ Error loading roadmap:', error);
+        console.error('💡 Tip: Ensure the role ID matches the file name exactly (e.g., "frontend-developer")');
         document.getElementById('roadmap-header').innerHTML = '<h1>Roadmap not found</h1>';
     }
 }

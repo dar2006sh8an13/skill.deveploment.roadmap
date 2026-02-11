@@ -275,6 +275,8 @@ function showHomeView() {
 }
 
 async function showRoadmapView(roleId) {
+    console.log('🔍 Loading roadmap view for role:', roleId);
+
     document.getElementById('home-view').style.display = 'none';
     const roadmapView = document.getElementById('roadmap-view');
     roadmapView.style.display = 'block';
@@ -284,14 +286,20 @@ async function showRoadmapView(roleId) {
     document.getElementById('roadmap-content').innerHTML = '';
 
     try {
+        console.log('📍 Fetching from:', `${API_BASE_URL}/api/roadmaps/${roleId}`);
         const response = await fetch(`${API_BASE_URL}/api/roadmaps/${roleId}`);
+        console.log('📡 Response status:', response.status, response.statusText);
+
         if (!response.ok) throw new Error('Role not found');
 
         const data = await response.json();
+        console.log('✅ Role data loaded:', data.title);
+
         renderRoadmap(data);
         history.pushState(null, '', `/roadmaps/${roleId}`);
     } catch (error) {
-        console.error(error);
+        console.error('❌ Error loading role:', error);
+        console.error('💡 Tip: Role ID should match file name (e.g., "frontend-developer")');
         document.getElementById('roadmap-title').textContent = 'Role not found';
     }
 }
