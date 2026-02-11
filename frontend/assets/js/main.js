@@ -419,6 +419,29 @@ function renderRoadmap(data) {
         `;
         content.appendChild(toolsSection);
     }
+
+    // Render Resources
+    if (data.resources && data.resources.length > 0) {
+        const resourcesSection = document.createElement('div');
+        resourcesSection.className = 'roadmap-level';
+        resourcesSection.innerHTML = `
+            <div class="level-marker" style="background: #17a2b8; border-color: #17a2b8;"></div>
+            <h3 class="level-title">Recommended Resources</h3>
+            <ul class="resource-list" style="list-style: none; padding-left: 0; margin-top: 15px;">
+                ${data.resources.map(r => `
+                    <li style="margin-bottom: 10px;">
+                        <a href="${r.url || '#'}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           style="color: #007bff; text-decoration: none; font-size: 1rem;">
+                            ${r.name} ↗
+                        </a>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        content.appendChild(resourcesSection);
+    }
 }
 
 function capitalize(s) {
