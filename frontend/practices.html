@@ -15,6 +15,13 @@
                 <img src="assets/images/logo.jpeg" alt="skill.development.roadmap" class="logo-img">
                 <span>skill.development.roadmap</span>
             </div>
+
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#skills-container">Skills</a></li>
@@ -97,6 +104,25 @@
     <script src="assets/js/config.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
+            // Mobile Menu Logic
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
             try {
                 const response = await fetch(`${API_BASE_URL}/api/practices`);
                 const practices = await response.json();
