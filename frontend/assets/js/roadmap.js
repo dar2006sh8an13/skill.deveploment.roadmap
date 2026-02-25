@@ -45,21 +45,26 @@ function renderRoadmap(data) {
     document.getElementById('roadmap-desc').textContent = data.description;
 
     // Display estimated time if available
-    const header = document.getElementById('roadmap-header');
-    const existingTime = document.getElementById('roadmap-time');
-    if (existingTime) existingTime.remove();
+    const metaContainer = document.getElementById('roadmap-meta');
+    metaContainer.innerHTML = '';
 
     if (data.estimatedTime) {
-        const timeP = document.createElement('p');
-        timeP.id = 'roadmap-time';
-        timeP.style.marginTop = '10px';
-        timeP.style.fontWeight = 'bold';
-        timeP.innerHTML = `⏱ Estimated Time: <span style="color: #ffd700;">${data.estimatedTime}</span>`;
-        header.appendChild(timeP);
+        metaContainer.innerHTML += `
+            <div style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                ⏱ ${data.estimatedTime}
+            </div>
+        `;
     }
+
+    // Sidebar Data
+    document.getElementById('role-scope').textContent = data.careerScope || 'High demand in the current market with diverse opportunities.';
+    document.getElementById('role-salary').textContent = data.salaryRange || '$80k - $150k+';
 
     const container = document.getElementById('roadmap-content');
     container.innerHTML = ''; // Clear loading state
+
+    // Progress Calculation
+    updateProgress(data);
 
     data.levels.forEach(level => {
         const levelDiv = document.createElement('div');
@@ -80,10 +85,11 @@ function renderRoadmap(data) {
         });
 
         level.items.forEach(item => {
-            const li = document.createElement('li');
-            li.className = `topic-item ${item.status || 'required'}`;
+            const li = document.createElement('div');
+            li.className = `topic-item card ${item.status || 'required'}`;
+            li.style.marginBottom = '15px';
+            li.style.borderLeft = `4px solid ${item.status === 'optional' ? 'var(--text-muted)' : 'var(--primary-color)'}`;
 
-            // Generate a unique ID for the item to save status
             const uniqueId = `${data.id}-${level.name.replace(/\s+/g, '-')}-${item.topic.replace(/\s+/g, '-')}`;
             const isCompleted = localStorage.getItem(uniqueId) === 'true';
 
@@ -91,33 +97,41 @@ function renderRoadmap(data) {
             const statusClass = isCompleted ? 'completed' : (item.status || 'required');
 
             li.innerHTML = `
-                <div class="topic-header">
-                    <span class="topic-title">${item.topic}</span>
-                    <span class="topic-status ${statusClass}" data-id="${uniqueId}" data-original-status="${item.status || 'required'}">${statusText}</span>
+                <div class="topic-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="topic-title" style="font-weight: 700; color: var(--text-main);">${item.topic}</span>
+                    <span class="topic-status ${statusClass}" data-id="${uniqueId}" data-original-status="${item.status || 'required'}" 
+                          style="cursor: pointer; font-size: 0.75rem; padding: 4px 10px; border-radius: 10px; font-weight: 700; text-transform: uppercase;">
+                        ${statusText}
+                    </span>
                 </div>
-                ${item.description ? `<div class="topic-desc">${item.description}</div>` : ''}
+                ${item.description ? `<div class="topic-desc" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-muted);">${item.description}</div>` : ''}
             `;
 
-            // Add click event listener to the status badge
             const statusBadge = li.querySelector('.topic-status');
-            statusBadge.style.cursor = 'pointer';
-            statusBadge.title = "Click to toggle completion";
+            if (isCompleted) {
+                statusBadge.style.background = '#2ecc71';
+                statusBadge.style.color = 'white';
+            } else {
+                statusBadge.style.background = '#f1f3f6';
+                statusBadge.style.color = 'var(--text-muted)';
+            }
 
             statusBadge.addEventListener('click', (e) => {
                 e.stopPropagation();
-
                 const currentStatus = localStorage.getItem(uniqueId) === 'true';
                 const newStatus = !currentStatus;
-
                 localStorage.setItem(uniqueId, newStatus);
 
                 if (newStatus) {
                     statusBadge.textContent = 'Completed';
-                    statusBadge.className = 'topic-status completed';
+                    statusBadge.style.background = '#2ecc71';
+                    statusBadge.style.color = 'white';
                 } else {
                     statusBadge.textContent = statusBadge.dataset.originalStatus;
-                    statusBadge.className = `topic-status ${statusBadge.dataset.originalStatus}`;
+                    statusBadge.style.background = '#f1f3f6';
+                    statusBadge.style.color = 'var(--text-muted)';
                 }
+                updateProgress(data);
             });
 
             list.appendChild(li);
@@ -127,4 +141,26 @@ function renderRoadmap(data) {
         levelDiv.appendChild(list);
         container.appendChild(levelDiv);
     });
+}
+
+function updateProgress(data) {
+    let total = 0;
+    let completed = 0;
+
+    data.levels.forEach(level => {
+        level.items.forEach(item => {
+            total++;
+            const uniqueId = `${data.id}-${level.name.replace(/\s+/g, '-')}-${item.topic.replace(/\s+/g, '-')}`;
+            if (localStorage.getItem(uniqueId) === 'true') {
+                completed++;
+            }
+        });
+    });
+
+    const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const progressBar = document.getElementById('roadmap-progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    if (progressBar) progressBar.style.width = `${percentage}%`;
+    if (progressText) progressText.textContent = `${percentage}% Completed (${completed}/${total})`;
 }

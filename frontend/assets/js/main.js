@@ -742,3 +742,134 @@ function toggleProjectDetails(btn) {
     }
 }
 window.toggleProjectDetails = toggleProjectDetails;
+// Quiz Variables
+let currentQuizSkill = '';
+let currentQuestions = [];
+
+window.openQuiz = async function (skillName) {
+    currentQuizSkill = skillName;
+    const modal = document.getElementById('quiz-modal');
+    const content = document.getElementById('quiz-content');
+    const footer = document.getElementById('quiz-footer');
+    const title = document.getElementById('quiz-skill-name');
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    title.textContent = `${skillName} Quiz`;
+    footer.style.display = 'none';
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/quiz/${encodeURIComponent(skillName)}`);
+        if (!response.ok) throw new Error('Quiz not found');
+        const data = await response.json();
+        currentQuestions = data.questions;
+
+        if (!currentQuestions || currentQuestions.length === 0) {
+            content.innerHTML = '<p style="text-align:center;">No quiz questions available for this skill yet.</p>';
+            return;
+        }
+
+        renderQuestions(currentQuestions);
+        footer.style.display = 'flex';
+    } catch (err) {
+        content.innerHTML = `<p style="text-align:center; color: #e74c3c;">Failed to load quiz: ${err.message}</p>`;
+    }
+};
+
+window.closeQuiz = function () {
+    document.getElementById('quiz-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
+
+function renderQuestions(questions) {
+    const content = document.getElementById('quiz-content');
+    content.innerHTML = questions.map((q, idx) => `
+        <div class="question-card">
+            <p class="question-text">${idx + 1}. ${q.question}</p>
+            <div class="options-list">
+                ${q.options.map((opt, oIdx) => `
+                    <label class="option-item" onclick="selectOption(this)">
+                        <input type="radio" name="q${idx}" value="${opt}">
+                        <span class="option-label">${opt}</span>
+                    </label>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+window.selectOption = function (el) {
+    const parent = el.closest('.options-list');
+    parent.querySelectorAll('.option-item').forEach(item => item.classList.remove('selected'));
+    el.classList.add('selected');
+};
+
+document.getElementById('submit-quiz-btn')?.addEventListener('click', async () => {
+    const answers = [];
+    let complete = true;
+
+    currentQuestions.forEach((_, idx) => {
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (selected) {
+            answers.push(selected.value);
+        } else {
+            complete = false;
+        }
+    });
+
+    if (!complete) {
+        alert('Please answer all questions before submitting.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/submit-quiz`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                skill_name: currentQuizSkill,
+                answers: answers,
+                user_id: 1 // Placeholder
+            })
+        });
+
+        const result = await response.json();
+        showQuizResult(result);
+    } catch (err) {
+        alert('Error submitting quiz. Please try again.');
+    }
+});
+
+function showQuizResult(result) {
+    const content = document.getElementById('quiz-content');
+    const footer = document.getElementById('quiz-footer');
+    footer.style.display = 'none';
+
+    content.innerHTML = `
+        <div class="quiz-result">
+            <span class="result-badge ${result.passed ? 'pass' : 'fail'}">
+                ${result.passed ? 'Passed - Mastered' : 'Failed - Keep Learning'}
+            </span>
+            <div class="score-display">${Math.round(result.score)}%</div>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">
+                ${result.passed
+            ? `Congratulations! You have successfully mastered <strong>${currentQuizSkill}</strong>.`
+            : `Don't give up! Review the course material for <strong>${currentQuizSkill}</strong> and try again.`}
+            </p>
+            <button onclick="closeQuiz()" class="btn-recommend" style="width: auto; padding: 12px 40px; background: ${result.passed ? 'var(--primary-color)' : 'var(--text-muted)'}">
+                ${result.passed ? 'Continue Learning' : 'Close'}
+            </button>
+            ${!result.passed ? `<button onclick="openQuiz('${currentQuizSkill}')" class="btn-retry" style="margin-left: 10px;">Retry Quiz</button>` : ''}
+        </div>
+    `;
+}
+
+// Global UI Enhancements
+function initUI() {
+    const welcomeEl = document.getElementById('user-welcome');
+    if (welcomeEl) {
+        const user = JSON.parse(localStorage.getItem('user')) || { name: 'Skill Learner' };
+        welcomeEl.textContent = user.name;
+    }
+}
+initUI();

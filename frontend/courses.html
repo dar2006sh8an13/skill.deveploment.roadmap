@@ -218,102 +218,113 @@
 
     <main class="container">
         <!-- Hero -->
-        <section class="hero" style="background: linear-gradient(135deg, #6f42c1, #a855f7);">
+        <section class="hero">
             <h1>AI Skill Recommendation System</h1>
-            <p>Select your domain and level to get a personalized learning roadmap.</p>
+            <p>Select your domain and experience level to generate a customized learning roadmap tailored to your career
+                goals.</p>
         </section>
 
         <!-- Selection Form -->
-        <div class="courses-form">
-            <h2>Find Your Path</h2>
-            <p class="subtitle">Choose a job domain and your current skill level.</p>
+        <div class="card courses-form"
+            style="max-width: 600px; margin: -40px auto 60px; position: relative; z-index: 10;">
+            <div style="padding: 10px;">
+                <h2 style="margin-bottom: 8px;">Find Your Path</h2>
+                <p class="subtitle" style="margin-bottom: 24px;">Choose a job domain and your current skill level.</p>
 
-            <div class="form-group">
-                <label for="domain-select">Job Domain</label>
-                <select id="domain-select">
-                    <option value="">Loading domains...</option>
-                </select>
+                <div class="form-group">
+                    <label for="domain-select">Target job Domain</label>
+                    <select id="domain-select">
+                        <option value="">Loading domains...</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="level-select">Your Experience Level</label>
+                    <select id="level-select">
+                        <option value="">Loading levels...</option>
+                    </select>
+                </div>
+
+                <button class="btn-recommend" id="get-path-btn"
+                    style="margin-top: 30px; background: var(--primary-color); border: none; padding: 16px; border-radius: 12px; font-weight: 700; color: white; width: 100%; cursor: pointer; transition: all 0.3s ease;">
+                    Generate Personalized Path
+                </button>
             </div>
-
-            <div class="form-group">
-                <label for="level-select">Level</label>
-                <select id="level-select">
-                    <option value="">Loading levels...</option>
-                </select>
-            </div>
-
-            <button class="btn-recommend" id="get-path-btn">Get Skill Path</button>
         </div>
 
         <!-- Results -->
-        <div class="results-area" id="results-area"></div>
+        <div class="results-area" id="results-area">
+            <!-- Results will be injected here as modern cards -->
+        </div>
     </main>
 
 
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>skill.development.roadmap</h3>
-                <p>Step-by-step guides and paths to learn different tools or technologies. Open source and community
-                    driven.</p>
-                <div class="social-links">
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; overflow-y: auto; padding: 40px 20px;">
+        <div class="quiz-container card"
+            style="background: var(--bg-color); border: none; max-width: 800px; padding: 0; overflow: hidden;">
+            <div class="quiz-header"
+                style="background: var(--primary-color); color: white; padding: 24px; position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2 id="quiz-skill-name" style="color: white; margin: 0;">Skill Quiz</h2>
+                    <p id="quiz-subtitle" style="margin: 4px 0 0; opacity: 0.8; font-size: 0.9rem;">Answer all questions
+                        to complete this skill.</p>
+                </div>
+                <button onclick="closeQuiz()"
+                    style="background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;">&times;</button>
+            </div>
 
-                    <a href="https://www.instagram.com/skill._ds?igsh=c2lyajd0MG5tZTNm" class="social-link"
-                        aria-label="Instagram" style="background: transparent;">
-                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
-                            <defs>
-                                <radialGradient id="ig_grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                                    <stop offset="0%" style="stop-color:#f09433;stop-opacity:1" />
-                                    <stop offset="25%" style="stop-color:#e6683c;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#dc2743;stop-opacity:1" />
-                                    <stop offset="75%" style="stop-color:#cc2366;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#bc1888;stop-opacity:1" />
-                                </radialGradient>
-                            </defs>
-                            <rect width="24" height="24" rx="6" fill="url(#ig_grad)" />
-                            <path fill="#ffffff"
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="https://chat.whatsapp.com/GpCw2yWr9AE9OW7LdSc1xG" class="social-link real-icon"
-                        aria-label="WhatsApp" style="background: transparent;">
-                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
-                            <circle cx="12" cy="12" r="12" fill="#25D366" />
-                            <path fill="#ffffff"
-                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-.967-.272-.297-.471-.421-.644-.544-.174-.124-.372-.198-.718-.198-.347 0-.917.129-1.388.644s-1.808 1.758-1.808 4.286c0 2.528 1.832 4.971 2.083 5.318.252.347 3.585 5.503 8.736 7.712.519.221.921.362 1.233.463.513.167 1.096.143 1.558.075.52-.077 1.758-.718 2.006-1.411.248-.694.248-1.289.173-1.413z" />
-                        </svg>
-                    </a>
-                    <a href="https://t.me/skillds" class="social-link" aria-label="Telegram"
-                        style="background: transparent;">
-                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
-                            <circle cx="12" cy="12" r="12" fill="#0088cc" />
-                            <path fill="#ffffff"
-                                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 7.007l-2.012 9.487c-.151.67-.552.836-1.114.519l-3.078-2.268-1.485 1.429c-.164.164-.302.302-.619.302l.221-3.132 5.7-5.148c.248-.221-.054-.344-.383-.124l-7.045 4.435-3.033-.948c-.659-.206-.671-.659.137-.975l11.854-4.572c.549-.206 1.028.124.857.996z" />
-                        </svg>
-                    </a>
+            <div id="quiz-content" style="padding: 30px;">
+                <!-- Questions will be injected here -->
+                <div style="text-align: center; padding: 60px;">
+                    <div class="loading-spinner"
+                        style="border: 4px solid rgba(111,66,193,0.1); border-top: 4px solid var(--primary-color); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px;">
+                    </div>
+                    <p>Preparing your quiz...</p>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="practices.html">Best Practices</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>Have questions or suggestions? We'd love to hear from you.</p>
-                <ul>
-                    <li><a href="mailto:skills.development.section@gmail.com">skills.development.section@gmail.com</a>
-                    </li>
-                </ul>
+
+            <div id="quiz-footer"
+                style="padding: 20px 30px; background: white; border-top: 1px solid var(--border-color); display: none; justify-content: flex-end;">
+                <button id="submit-quiz-btn" class="btn-recommend" style="width: auto; padding: 12px 30px;">Submit
+                    Quiz</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 skill.development.roadmap. All rights reserved.</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;">
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <span>skill.development.roadmap</span>
+                    </div>
+                    <p style="color: var(--text-muted);">Empowering developers with step-by-step roadmaps, projects, and
+                        AI-powered skill recommendations.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="index.html">Roadmaps</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="practices.html">Best Practices</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="mailto:skills.development.section@gmail.com">Contact Us</a></li>
+                        <li><a href="https://github.com/dar2006sh8an13">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                <p>&copy; 2026 skill.development.roadmap. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -370,6 +381,13 @@
                 btn.disabled = true;
 
                 try {
+                    resultsArea.innerHTML = `
+                        <div style="text-align: center; padding: 60px;">
+                            <div class="loading-spinner" style="margin: 0 auto 20px;"></div>
+                            <p style="color: var(--text-muted); font-weight: 500;">AI is generating your custom path...</p>
+                        </div>
+                    `;
+
                     const response = await fetch(`${API_BASE_URL}/api/recommend`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -380,22 +398,61 @@
                     if (data.skills && data.skills.length > 0) {
                         const skillItems = data.skills.map((s, idx) => {
                             return `
-                                <li id="skill-item-${idx}">
-                                    <div class="skill-header">
-                                        <span class="skill-name">${s.skill}</span>
+                                <div class="card skill-result-card" style="margin-bottom: 20px;">
+                                    <div class="skill-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <div style="width: 40px; height: 40px; background: rgba(111,66,193,0.1); color: var(--primary-color); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800;">
+                                                ${idx + 1}
+                                            </div>
+                                            <h3 class="skill-name" style="margin: 0; font-size: 1.1rem;">${s.skill}</h3>
+                                        </div>
+                                        <span class="topic-status" style="background: rgba(40, 167, 69, 0.1); color: #28a745; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Recommended</span>
                                     </div>
-                                </li>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Perfect for your ${data.level} level path in ${data.domain}.</p>
+                                    <div class="skill-actions" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <a href="#" class="btn-sm" style="text-align: center; background: #f1f3f6; color: var(--text-main); padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                                            </svg>
+                                            Tutorial
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="openQuiz('${s.skill}')" class="btn-sm" style="text-align: center; background: rgba(111,66,193,0.1); color: var(--primary-color); padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.32 8.33a.75.75 0 0 1 1.08-1.04l2.09 2.15 3.48-4.47z"/>
+                                            </svg>
+                                            Quiz
+                                        </a>
+                                        <a href="#" class="btn-sm" style="text-align: center; background: var(--primary-color); color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(111,66,193,0.2);">
+                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5v-11zM2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5h-11z"/>
+                                                <path d="M4.085 7.115a.5.5 0 0 1 .63-.18l1.903 1.103 3.974-4.56a.5.5 0 0 1 .758.654l-4.5 5.17a.5.5 0 0 1-.725.047l-2.203-1.28a.5.5 0 0 1-.18-.654z"/>
+                                            </svg>
+                                            Enroll
+                                        </a>
+                                        <a href="#" class="btn-sm" style="text-align: center; background: #28a745; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(40,167,69,0.2);">
+                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M8 1a.5.5 0 0 1 .5.5v1.2a.5.5 0 0 1-1 0V1.5A.5.5 0 0 1 8 1zm3.5 3a.5.5 0 0 1 .707 0l.848.848a.5.5 0 1 1-.707.707l-.848-.848a.5.5 0 0 1 0-.707zm-7 0a.5.5 0 0 1 0 .707l-.848.848a.5.5 0 1 1-.707-.707l.848-.848a.5.5 0 0 1 .707 0zM8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                                <path d="M12.912 11.325a.5.5 0 0 1 .494.507l-.032 1.026a1.5 1.5 0 0 1-1.465 1.465l-1.026.032a.5.5 0 0 1-.507-.494.5.5 0 0 1 .507-.494l1.026-.032c.323-.01.597-.245.642-.564l.032-1.026a.5.5 0 0 1 .507-.494zM1.088 11.325a.5.5 0 0 0-.494.507l.032 1.026a1.5 1.5 0 0 0 1.465 1.465l1.026-.032a.5.5 0 0 0 .507-.494.5.5 0 0 0-.507-.494l-1.026.032c-.323.01-.597.245-.642.564l-.032 1.026a.5.5 0 0 0-.507.494z"/>
+                                            </svg>
+                                            Certificate
+                                        </a>
+                                    </div>
+                                </div>
                             `;
                         }).join('');
 
                         resultsArea.innerHTML = `
-                            <div class="results-card">
-                                <h3>${data.domain} — ${data.level} Path</h3>
-                                <p class="results-meta">${data.skills.length} core skills to master.</p>
-                                <ul class="skill-roadmap">${skillItems}</ul>
+                            <div class="results-header" style="text-align: center; margin-bottom: 30px;">
+                                <h2 style="color: var(--text-main); font-weight: 800;">Your Learning Path</h2>
+                                <p style="color: var(--text-muted);">${data.skills.length} core skills recommended for ${data.domain} (${data.level})</p>
+                            </div>
+                            <div class="results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px;">
+                                ${skillItems}
                             </div>`;
                     } else {
-                        resultsArea.innerHTML = `<div class="results-card"><p class="no-results">Path not found for selected options.</p></div>`;
+                        resultsArea.innerHTML = `<div class="card" style="text-align: center; padding: 40px;"><p class="no-results">Path not found for selected options. Please try another combination.</p></div>`;
                     }
                 } catch (err) {
                     resultsArea.innerHTML = `<div class="results-card"><p class="error-msg">Error fetching recommendation.</p></div>`;
