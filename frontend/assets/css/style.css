@@ -393,8 +393,7 @@ footer {
     width: 32px !important;
     /* Slightly larger for visibility */
     height: 32px !important;
-    fill: none !important;
-    /* Allow internal fills to work */
+    /* Removed restrictive fill: none !important to allow filled icons like WhatsApp/Telegram to show */
     border-radius: 0 !important;
 }
 
