@@ -1,0 +1,72 @@
+{
+    "id": "claude-code",
+    "name": "Claude Code",
+    "type": "skill",
+    "overview": "Claude Code is Anthropic's agentic CLI tool that helps developers write, debug, and test code. This roadmap covers mastering the Claude ecosystem and the specific techniques required to get the most out of Claude 3.5 Sonnet and beyond.",
+    "prerequisites": [
+        "Command Line Proficiency",
+        "Knowledge of an existing programming language",
+        "Anthropic API Key"
+    ],
+    "concepts": [
+        "Agentic Workflows",
+        "Context Window Management",
+        "Tool Use (Function Calling)",
+        "System Prompts for Coding"
+    ],
+    "learningOrder": [
+        "Installation & Config",
+        "Interactive Mode & File Ops",
+        "Automated Testing & Debugging",
+        "Advanced Agentic Integration"
+    ],
+    "tools": [
+        "Claude Code CLI",
+        "Anthropic Console",
+        "MCP (Model Context Protocol)",
+        "Sonnet 3.5"
+    ],
+    "roadmap": {
+        "beginner": [
+            "Installing Claude Code",
+            "Basic file exploration and editing",
+            "Asking questions about large codebases",
+            "Generating basic unit tests"
+        ],
+        "intermediate": [
+            "Using MCP servers for local context",
+            "Interactive multi-step debugging",
+            "Refactoring legacy code with agentic loops",
+            "Context management: pruning and pin-pointing"
+        ],
+        "advanced": [
+            "Building custom MCP servers",
+            "Automating CI/CD checks with Claude",
+            "Benchmarking AI performance on custom tasks",
+            "Advanced system-level architecture planning"
+        ]
+    },
+    "projects": [
+        {
+            "id": "proj-claude-cli-automation",
+            "title": "Auto-Refactor Suite",
+            "level": "Intermediate",
+            "description": "Build a workflow using Claude Code to automatically identify and fix common linting issues across a project.",
+            "techStack": [
+                "Claude Code CLI",
+                "Bash",
+                "Node.js"
+            ],
+            "learningOutcomes": [
+                "Agentic task automation",
+                "CLI tool mastery"
+            ]
+        }
+    ],
+    "bestPractices": [
+        "Provide clear repo-level context",
+        "Use the /compact command to save tokens",
+        "Write specific instructions for complex tasks",
+        "Integrate with MCP for live data"
+    ]
+}

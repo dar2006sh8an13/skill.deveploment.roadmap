@@ -1,0 +1,72 @@
+{
+    "id": "vibe-coding",
+    "name": "Vibe Coding",
+    "type": "skill",
+    "overview": "Vibe Coding is a modern approach to software development where natural language intent and 'vibes' drive the generation of code through LLMs. It shifts the focus from writing lines of code to directing the AI's creative and logical output.",
+    "prerequisites": [
+        "Basic understanding of programming logic",
+        "Familiarity with LLMs (ChatGPT, Claude, etc.)"
+    ],
+    "concepts": [
+        "Intent-based Development",
+        "Prompt Iteration",
+        "AI Pair Programming",
+        "Validation & Debugging AI Code"
+    ],
+    "learningOrder": [
+        "Introduction to AI Assistance",
+        "Effective Communication with LLMs",
+        "Building with Vibe Coding",
+        "Security & Ethics"
+    ],
+    "tools": [
+        "Claude",
+        "Cursor",
+        "v0",
+        "Bolt.new",
+        "Replit Agent"
+    ],
+    "roadmap": {
+        "beginner": [
+            "Understanding LLM Capabilities",
+            "Drafting clear natural language specs",
+            "Using Cursor for basic file edits",
+            "The 'Refine' loop"
+        ],
+        "intermediate": [
+            "System Instructions for development",
+            "Complex refactoring with AI",
+            "Building full-stack features with 'vibe'",
+            "Debugging AI hallucinations"
+        ],
+        "advanced": [
+            "Automated Agent workflows",
+            "Fine-tuning AI behavior for specific tech stacks",
+            "Advanced prompt chaining for system design",
+            "Maintaining code quality in AI-generated repos"
+        ]
+    },
+    "projects": [
+        {
+            "id": "proj-vibe-simple-app",
+            "title": "Vibed Dashboard",
+            "level": "Beginner",
+            "description": "Create a fully functional CSS/JS dashboard purely through natural language prompts.",
+            "techStack": [
+                "Cursor",
+                "v0",
+                "Tailwind"
+            ],
+            "learningOutcomes": [
+                "Effective prompting",
+                "Rapid prototyping"
+            ]
+        }
+    ],
+    "bestPractices": [
+        "Be specific with intent",
+        "Always review AI-generated code",
+        "Use iterative refinement",
+        "Keep human-in-the-loop for security"
+    ]
+}

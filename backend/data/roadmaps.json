@@ -196,6 +196,20 @@
         "icon": "⛓️"
     },
     {
+        "id": "vibe-coding",
+        "title": "Vibe Coding",
+        "type": "skill",
+        "description": "LLM-driven development using natural language 'vibe' and intent.",
+        "icon": "✨"
+    },
+    {
+        "id": "claude-code",
+        "title": "Claude Code",
+        "type": "skill",
+        "description": "Mastering the Anthropic toolset and Claude-specific engineering.",
+        "icon": "🧪"
+    },
+    {
         "id": "javascript",
         "title": "JavaScript",
         "type": "skill",

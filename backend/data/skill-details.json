@@ -754,5 +754,184 @@
                 "url": "https://cryptozombies.io/"
             }
         ]
+    },
+    "prompt-engineering": {
+        "name": "Prompt Engineering",
+        "overview": "Prompt Engineering is the art and science of communicating effectively with Large Language Models (LLMs). It involves crafting, optimizing, and refining inputs to achieve high-quality, reliable, and predictable AI outputs.",
+        "prerequisites": [
+            "Basic computer literacy",
+            "Curiosity about AI behavior"
+        ],
+        "concepts": [
+            "Zero-shot vs Few-shot",
+            "Chain-of-Thought (CoT)",
+            "System vs User Prompts",
+            "Hallucination Mitigation",
+            "Prompt Injection Security"
+        ],
+        "tools": [
+            "OpenAI Playground",
+            "Anthropic Console",
+            "LangChain",
+            "Promptfoo"
+        ],
+        "roadmap": {
+            "beginner": [
+                "Drafting clear instructions",
+                "Using Delimiters",
+                "Structured output formats"
+            ],
+            "intermediate": [
+                "Few-shot examples",
+                "Negative constraints",
+                "Introduction to RAG"
+            ],
+            "advanced": [
+                "Chain-of-Thought reasoning",
+                "ReAct patterns",
+                "Programmatic prompting"
+            ]
+        },
+        "projects": {
+            "mini": [
+                "Style Transfer Prompt",
+                "Information Extractor"
+            ],
+            "realworld": [
+                "Prompt Evaluation Suite",
+                "AI Content Moderator"
+            ]
+        },
+        "bestPractices": [
+            "Be explicit",
+            "Show, don't just tell",
+            "Iterate based on feedback",
+            "Verify the output"
+        ],
+        "mistakes": [
+            "Vague instructions",
+            "Assuming perfect memory",
+            "Ignoring model limits"
+        ],
+        "resources": [
+            {
+                "name": "Prompt Engineering Guide",
+                "url": "https://www.promptingguide.ai/"
+            }
+        ]
+    },
+    "vibe-coding": {
+        "name": "Vibe Coding",
+        "overview": "Vibe Coding is a modern approach where natural language intent drives AI-assisted code generation. It focuses on higher-level system design and creative direction rather than manual syntax entry.",
+        "prerequisites": [
+            "Programming logic basics",
+            "LLM familiarity"
+        ],
+        "concepts": [
+            "Intent-based coding",
+            "AI Pair Programming",
+            "Iteration loops"
+        ],
+        "tools": [
+            "Cursor",
+            "v0",
+            "Claude",
+            "Replit Agent"
+        ],
+        "roadmap": {
+            "beginner": [
+                "Clear intent drafting",
+                "Refine loops",
+                "Building static UI"
+            ],
+            "intermediate": [
+                "System instructions",
+                "Complex refactoring",
+                "Debugging AI logic"
+            ],
+            "advanced": [
+                "Agentic workflows",
+                "Tech stack fine-tuning",
+                "Large-scale AI maintenance"
+            ]
+        },
+        "projects": {
+            "mini": [
+                "Vibed Website",
+                "AI UI Generator"
+            ],
+            "realworld": [
+                "Full-stack MVP with AI",
+                "Automated Agent Tool"
+            ]
+        },
+        "bestPractices": [
+            "Iterate quickly",
+            "Provide context files",
+            "Review generated code",
+            "Keep intent clear"
+        ],
+        "mistakes": [
+            "Trusting AI blindly",
+            "Over-prompting",
+            "Ignoring code structure"
+        ],
+        "resources": []
+    },
+    "claude-code": {
+        "name": "Claude Code",
+        "overview": "Mastering Anthropic's agentic CLI tool (Claude Code) and the Model Context Protocol (MCP) for deep, automated codebase integration.",
+        "prerequisites": [
+            "CLI proficiency",
+            "Codebase knowledge"
+        ],
+        "concepts": [
+            "Agentic CLI use",
+            "MCP Protocol",
+            "Context management"
+        ],
+        "tools": [
+            "Claude CLI",
+            "Anthropic Console",
+            "MCP Servers"
+        ],
+        "roadmap": {
+            "beginner": [
+                "Installation & Config",
+                "File exploration",
+                "Basic unit test generation"
+            ],
+            "intermediate": [
+                "MCP server integration",
+                "Interactive debugging",
+                "Legacy codebase analysis"
+            ],
+            "advanced": [
+                "Custom MCP development",
+                "CI/CD AI integration",
+                "Automated PR reviews"
+            ]
+        },
+        "projects": {
+            "mini": [
+                "CLI Test Generator",
+                "Repo Searcher"
+            ],
+            "realworld": [
+                "Auto-Refactor Suite",
+                "Custom MCP Connector"
+            ]
+        },
+        "bestPractices": [
+            "Provide broad context",
+            "Use /compact often",
+            "Give direct feedback"
+        ],
+        "mistakes": [
+            "Not checking file changes",
+            "Insufficient context",
+            "Token mismanagement"
+        ],
+        "resources": []
     }
 }

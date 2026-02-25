@@ -2,557 +2,74 @@
   "id": "prompt-engineering",
   "name": "Prompt Engineering",
   "type": "skill",
-  "overview": "Prompt Engineering is a crucial skill for modern development. Crafting inputs for AI models.",
+  "overview": "Prompt Engineering is the art and science of communicating effectively with Large Language Models (LLMs). It involves crafting, optimizing, and refining inputs to achieve high-quality, reliable, and predictable AI outputs.",
   "prerequisites": [
-    "Basic Programming Knowledge",
-    "Logical Thinking"
+    "Basic computer literacy",
+    "Curiosity about AI behavior",
+    "Good communication skills"
   ],
   "concepts": [
-    "Core Syntax & Semantics",
-    "Advanced Features",
-    "Ecosystem & Tooling",
-    "Best Practices"
+    "Zero-shot vs Few-shot Prompting",
+    "Chain-of-Thought (CoT)",
+    "System vs User Prompts",
+    "Temperature & Top-P Sampling",
+    "Hallucination Mitigation",
+    "Prompt Injection & Security"
   ],
   "learningOrder": [
-    "Basics",
-    "Intermediate",
-    "Advanced"
+    "LLM Foundations",
+    "Basic Prompting Frameworks",
+    "Advanced Reasoning Techniques",
+    "Agentic Programmatic Prompting"
   ],
   "tools": [
-    "Official Documentation",
-    "Related Frameworks"
+    "OpenAI Playground",
+    "Anthropic Console",
+    "LangChain",
+    "Promptfoo",
+    "BetterPrompt"
   ],
   "roadmap": {
     "beginner": [
-      "Installation & Setup",
-      "Hello World",
-      "Basic Syntax",
-      "Variables & Data Types"
+      "Understanding LLM Architecture basics",
+      "Drafting clear, explicit instructions",
+      "Using Delimiters and structured output formats",
+      "Basic creative writing with AI"
     ],
     "intermediate": [
-      "Control Structures",
-      "Functions/Methods",
-      "Error Handling",
-      "Modules/Packages"
+      "Role-based prompting techniques",
+      "Few-shot examples for style transfer",
+      "Negative constraints and avoidance",
+      "Introduction to RAG (Retrieval Augmented Generation)"
     ],
     "advanced": [
-      "Memory Management",
-      "Concurrency/Async",
-      "Performance Optimization",
-      "Testing"
+      "Chain-of-Thought and Least-to-Most prompting",
+      "ReAct patterns (Reasoning + Acting)",
+      "Programmatic prompting with JSON schema",
+      "Red-teaming and prompt security"
     ]
   },
   "projects": [
     {
-      "id": "proj-skill-prompt-engineering-beginner-0",
-      "title": "Prompt Engineering Concept Demo 1",
-      "level": "Beginner",
-      "problemStatement": "Learning.",
-      "description": "Demonstrate basic concept.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Core"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-beginner-1",
-      "title": "Prompt Engineering Concept Demo 2",
-      "level": "Beginner",
-      "problemStatement": "Learning.",
-      "description": "Demonstrate basic concept.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Core"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-beginner-2",
-      "title": "Prompt Engineering Concept Demo 3",
-      "level": "Beginner",
-      "problemStatement": "Learning.",
-      "description": "Demonstrate basic concept.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Core"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-beginner-3",
-      "title": "Prompt Engineering Concept Demo 4",
-      "level": "Beginner",
-      "problemStatement": "Learning.",
-      "description": "Demonstrate basic concept.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Core"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-intermediate-0",
-      "title": "Prompt Engineering Applied Tool 1",
+      "id": "proj-prompt-eval",
+      "title": "Prompt Evaluation Suite",
       "level": "Intermediate",
-      "problemStatement": "Usage.",
-      "description": "Use tool in context.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
+      "description": "Create a test suite that compares 5 different prompt versions for the same task to find the most accurate one.",
       "techStack": [
-        "Tooling"
+        "Python",
+        "OpenAI API",
+        "Promptfoo"
       ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-intermediate-1",
-      "title": "Prompt Engineering Applied Tool 2",
-      "level": "Intermediate",
-      "problemStatement": "Usage.",
-      "description": "Use tool in context.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Tooling"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-intermediate-2",
-      "title": "Prompt Engineering Applied Tool 3",
-      "level": "Intermediate",
-      "problemStatement": "Usage.",
-      "description": "Use tool in context.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Tooling"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-intermediate-3",
-      "title": "Prompt Engineering Applied Tool 4",
-      "level": "Intermediate",
-      "problemStatement": "Usage.",
-      "description": "Use tool in context.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Tooling"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-advanced-0",
-      "title": "Prompt Engineering Performance Tool",
-      "level": "Advanced",
-      "problemStatement": "Optimization.",
-      "description": "Make it faster.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Optimization"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-advanced-1",
-      "title": "Prompt Engineering Complex Logic",
-      "level": "Advanced",
-      "problemStatement": "Algorithm.",
-      "description": "Handle complexity.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Algo"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-advanced-2",
-      "title": "Prompt Engineering System Integration",
-      "level": "Advanced",
-      "problemStatement": "Connection.",
-      "description": "Connect systems.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Integration"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-industry-0",
-      "title": "Prompt Engineering Production System",
-      "level": "Capstone",
-      "problemStatement": "Reliability.",
-      "description": "Real-world constraints.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Production"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-industry-1",
-      "title": "Prompt Engineering Legacy Migration",
-      "level": "Capstone",
-      "problemStatement": "Maintenance.",
-      "description": "Upgrade old system.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "Refactoring"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
-    },
-    {
-      "id": "proj-skill-prompt-engineering-portfolio-0",
-      "title": "Prompt Engineering Showcase Project",
-      "level": "Project",
-      "problemStatement": "Career.",
-      "description": "Best work display.",
-      "keyConcepts": [
-        "Core Concept A",
-        "Core Concept B",
-        "Best Practice C"
-      ],
-      "techStack": [
-        "All Skills"
-      ],
-      "modules": [
-        "Core Logic",
-        "User Interface",
-        "Data Management",
-        "Tests"
-      ],
-      "implementationPlan": [
-        "Phase 1: Setup and Configuration.",
-        "Phase 2: Core Feature Implementation.",
-        "Phase 3: Testing and Refinement.",
-        "Phase 4: Documentation and Deployment."
-      ],
-      "deploymentStrategy": "Deploy to platform (e.g., Vercel, Heroku, AWS) using CI/CD.",
-      "securityConsiderations": "Input validation, sanitization, and secure dependency management.",
-      "performanceConsiderations": "Code optimization, caching strategies, and asset minification.",
-      "commonPitfalls": [
-        "Over-engineering",
-        "Ignoring edge cases"
-      ],
-      "repoLink": "#"
+      "learningOutcomes": [
+        "Qualitative evaluation",
+        "A/B testing prompts"
+      ]
     }
   ],
   "bestPractices": [
-    "Read the official docs",
-    "Write clean, readable code",
-    "Test your code",
-    "Follow community conventions"
-  ],
-  "commonMistakes": [
-    "Overcomplicating simple problems",
-    "Ignoring error handling",
-    "Not updating dependencies"
-  ],
-  "resources": [
-    {
-      "name": "Official Documentation",
-      "url": "#"
-    },
-    {
-      "name": "Community Tutorials",
-      "url": "#"
-    }
+    "Give the model a persona",
+    "Use delimiters to separate context",
+    "Ask for structured output (JSON/Markdown)",
+    "Iterate and version control your prompts"
   ]
 }

@@ -3509,5 +3509,70 @@
       "Write secure Solidity contracts",
       "Test and audit for common vulnerabilities"
     ]
+  },
+  {
+    "id": "prompt-1",
+    "title": "Prompt Evaluation Suite",
+    "level": "Intermediate",
+    "category": "AI/Prompt Engineering",
+    "techStack": [
+      "Python",
+      "OpenAI/Anthropic API",
+      "Promptfoo"
+    ],
+    "description": "Create a test suite that compares 5 different prompt versions for the same task to find the most accurate one.",
+    "problemStatement": "Large Language Models can be unpredictable; prompts need objective evaluation.",
+    "learningOutcomes": [
+      "Qualitative evaluation",
+      "A/B testing prompts"
+    ],
+    "implementationPlan": [
+      "Define success criteria for a specific task",
+      "Craft 5 variations of prompts",
+      "Run evaluations and score outputs"
+    ]
+  },
+  {
+    "id": "vibe-1",
+    "title": "Natural Language Full-stack MVP",
+    "level": "Intermediate",
+    "category": "Vibe Coding",
+    "techStack": [
+      "Cursor",
+      "Claude",
+      "Tailwind"
+    ],
+    "description": "Build a real-time collaborative task app through natural language descriptions.",
+    "problemStatement": "Rapidly prototype an idea without manual coding fatigue.",
+    "learningOutcomes": [
+      "Effective context sharing",
+      "Iterative AI debugging"
+    ],
+    "implementationPlan": [
+      "Draft a high-level system spec",
+      "Use 'vibe' to generate initial layout",
+      "Iteratively add backend functionality"
+    ]
+  },
+  {
+    "id": "claude-opt-1",
+    "title": "Automated Project Documenter",
+    "level": "Advanced",
+    "category": "Claude Code",
+    "techStack": [
+      "Claude Code CLI",
+      "MCP"
+    ],
+    "description": "Use Claude Code and custom MCP servers to automatically generate project documentation.",
+    "problemStatement": "Project documentation often lags behind code changes.",
+    "learningOutcomes": [
+      "CLI Agentic use",
+      "MCP server development"
+    ],
+    "implementationPlan": [
+      "Setup Claude Code on a project",
+      "Develop an MCP server to read file changes",
+      "Generate README via agentic loops"
+    ]
   }
 ]
