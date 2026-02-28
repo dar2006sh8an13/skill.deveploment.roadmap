@@ -5,9 +5,9 @@
 // ------------------------------------------------------------------
 
 // PRODUCTION - Render Backend
-const API_BASE_URL = "https://skill-deveploment-roadmap.onrender.com";
+// const API_BASE_URL = "https://skill-deveploment-roadmap.onrender.com";
 
 // LOCAL DEVELOPMENT (uncomment for local testing)
-// const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3000";
 
 // NOTE: When deploying to Vercel, ensure this points to your Render backend URL.
